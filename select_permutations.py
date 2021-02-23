@@ -16,12 +16,14 @@ parser.add_argument('--classes', default=1000, type=int,
                     help='Number of permutations to select')
 parser.add_argument('--selection', default='max', type=str, 
         help='Sample selected per iteration based on hamming distance: [max] highest; [mean] average')
+parser.add_argument('--n_pieces', default=3, type=int, 
+        help='Number of pieces to select')
 args = parser.parse_args()
 
 if __name__ == "__main__":
-    outname = 'permutations/permutations_hamming_%s_%d'%(args.selection,args.classes)
-    
-    P_hat = np.array(list(itertools.permutations(list(range(9)), 9)))
+    outname = 'permutations_hamming_%s_%d_%d'%(args.selection,args.classes, args.n_pieces)
+    P_hat = np.array(list(itertools.permutations(list(range(self.n_pieces)), n_pieces)))
+    print(P_hat.shape)
     n = P_hat.shape[0]
     
     for i in trange(args.classes):

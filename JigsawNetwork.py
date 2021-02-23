@@ -10,8 +10,8 @@ from torch import cat
 import torch.nn.init as init
 
 import sys
-sys.path.append('Utils')
-from Layers import LRN
+# sys.path.append('Utils')
+from Utils.Layers import LRN
 
 class Network(nn.Module):
 
@@ -70,6 +70,7 @@ class Network(nn.Module):
         x = x.transpose(0,1)
 
         x_list = []
+        # TODO: make the difficulty variable
         for i in range(9):
             z = self.conv(x[i])
             z = self.fc6(z.view(B,-1))
